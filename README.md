@@ -12,7 +12,7 @@ Practice for DeepLearning
     * [Caffe](#caffe)
 * [ImageRecognition](#image-recognition)
     * [MNIST](#mnist)
-* [Persons whom we should study about](#persons-whom-we-should-study-about)
+* [People whom we should study about](#people-whom-we-should-study-about)
 
 ## Introduction
 Deep Learning is one of the ways to make Neural Network. Deep Learning is of wide application so many companies and data scientists or others study about it to make world better, useful and powerful. Deep Learning hasn't been long since, we can have big dream if we are mastering.
