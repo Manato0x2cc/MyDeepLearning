@@ -2,7 +2,7 @@
 Practice for DeepLearning
 
 * [Introduction](#introduction)
-* [Human Training]
+* [Human Training](#human-training)
 
 * [Libraries](#libraries)
     * [Tensorflow](#tensorflow)
@@ -15,6 +15,14 @@ Practice for DeepLearning
 
 ## Introduction
 Deep Learning is one of the ways to make Neural Network. Deep Learning is of wide application so many companies and data scientists or others study about it to make world better, useful and powerful. Deep Learning hasn't been long since, we can have big dream if we are mastering.
+
+## Human Training
+This is the check list url of "Human Training" (Not Machine) that we should see.
+
+### Videos
+### Classes
+### Course
+
 
 ## Libraries
 This is the list of useful libraries that you can write your network easily.
