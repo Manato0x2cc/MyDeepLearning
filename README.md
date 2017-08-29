@@ -26,7 +26,7 @@ This is the check list url of "Human Training" (Not Machine) that we should see.
 
 
 ## Libraries
-This is the list of useful libraries that you can write your network easily.
+This is the list of useful libraries that we can write our network easily.
 
 ### Tensorflow
 - Homepage https://www.tensorflow.org
@@ -47,10 +47,13 @@ This is the list of useful libraries that you can write your network easily.
 
 ## Image Recognition
 ### MNIST
-- MNIST can be called "getting started" of deep learning. Even just try the model of default, you can make the model that can understand over 92 recognition. This repositry's model is keras's tutorial model but it can understand over 99 recognition if you take 20 epochs. MNIST is a small dataset that you easily train the model WITHOUT GPU. Try it!
+- MNIST can be called "getting started" of deep learning. Even just try the model of default, we can make the model that can understand over 92 recognition. This repositry's model is keras's tutorial model but it can understand over 99 recognition if you take 20 epochs. MNIST is a small dataset that you easily train the model WITHOUT GPU. Try it!
 - MnistApp.py is a GUI application that you can write numbers and try your model.
+### Shingeki
+- Shingeki-no-Kyojin(attack on titan) is japanese animation which all Japanese know. This program can classify those characters by using VGG16 model. This is practice for fine-tuning on Keras. Fine-tuning is one of the way to build our network using the trained model in advance. VGG16 has option that uses ImageNet. The model has already know how to study so we can build a smart model even if we have a few images.
 
-## People whom we should study about
+## People whom I should study about
+* Andrew Ng http://www.andrewng.org
 
 ## Author 
 Mnt2cc
