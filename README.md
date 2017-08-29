@@ -11,7 +11,7 @@ Practice for DeepLearning
     * [Theano](#theano)
     * [Caffe](#caffe)
 * [ImageRecognition](#image-recognition)
-    * [MNIST](#mnist)
+    * [MNIST](#mnist)
 * [People whom we should study about](#people-whom-we-should-study-about)
 
 ## Introduction
