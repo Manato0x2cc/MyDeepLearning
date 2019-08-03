@@ -128,12 +128,12 @@ class Gomoku {
         ];
 
         window.onresize = this.resize;
-
-        document.getElementById("canvas").addEventListener("click", this.onClick);
-
         this.stage = [];
         this.kifu = [];
         this.initStage();
+
+        document.getElementById("canvas").addEventListener("click", this.onClick);
+        this.playing = false;
     }
 
     filters_to_nums(filters) {
@@ -144,6 +144,10 @@ class Gomoku {
         return nums;
     }
 
+    /**
+     * フィルターは-1~1の値をとるので、+1して三進数とみなし、10進数に変換します。
+     * @param {*} filter 
+     */
     filter_to_num(filter) {
         var num = 0;
         var _t = 1;
@@ -174,6 +178,7 @@ class Gomoku {
 
     onClick(e) {
         var _this = Gomoku.getInstance()
+        if (!_this.playing) return;
         var rect = document.getElementById("canvas").getBoundingClientRect();
         var x = Math.floor((e.clientX - rect.x) / _this.r);
         var y = Math.floor((e.clientY - rect.y) / _this.r);
@@ -235,11 +240,11 @@ class Gomoku {
                 this.end(this.sprintf(Gomoku.MSG_END_MESSAGE, "白", Gomoku.MSG_DUE_BLACK_MADE_TYOREN));
             }
             //黒が四四を作った時
-            if (this.black && evaluate.findIndex(x => x === "四連" || x === "四") > 1) {
+            if (this.black && evaluate.findNum(x => x === Gomoku.EVALUATE_YONREN || x === Gomoku.EVALUATE_YON) > 1) {
                 this.end(this.sprintf(Gomoku.MSG_END_MESSAGE, "白", Gomoku.MSG_DUE_BLACK_MADE_YONYON));
             }
             //黒が三三を作った時
-            if (this.black && evaluate.findIndex(x => x === "三") > 1) {
+            if (this.black && evaluate.findNum(x => x === Gomoku.EVALUATE_SAN) > 1) {
                 this.end(this.sprintf(Gomoku.MSG_END_MESSAGE, "白", Gomoku.MSG_DUE_BLACK_MADE_SANSAN));
             }
 
@@ -262,11 +267,29 @@ class Gomoku {
         });
     }
 
-    end(msg){
-        alert(msg+"\nこのウィンドウを閉じるとリロードします。");
-        window.location.href = ".";
+    //情報を表示する関数
+    info(title, msg){
+        iziToast.info({
+            title: title,
+            message: msg,
+            position: 'topRight'
+        });
     }
 
+    /**
+     * 
+     * @param {string} msg 
+     */
+    end(msg){
+        this.info(msg, "");
+        this.playing = false;
+    }
+
+    /**
+     * 
+     * @param {string} msg 
+     * @param  {enum} args 
+     */
     sprintf(msg, ...args) {
         for (var i = 1; i <= args.length; i++) {
             msg = msg.replace("$" + i, args[i - 1]);
@@ -384,6 +407,8 @@ class Gomoku {
                 p++;
             }
         }
+        console.log(returns);
+        
         return returns;
     }
 
@@ -470,6 +495,34 @@ class Gomoku {
             }
         }
     }
+
+    start(){
+        this.player_first = Math.random() < 0.5;
+        var turn = this.player_first ? "先攻" : "後攻";
+        this.info(this.sprintf("あなたは$1です", turn), "");
+        this.playing = true;
+    }
 }
 
-var gomoku = Gomoku.getInstance().resize();
+var gomoku = Gomoku.getInstance();
+gomoku.resize();
+
+function start(){
+    document.getElementById("start-btn").style.display = "none";
+    gomoku.start();
+}
+
+//Arrayにcount関数を追加
+Object.defineProperties(Array.prototype, {
+    findNum: {
+        value: function(callback){
+            var count = 0;
+            for (let i = 0; i < this.length; i++){
+                if(callback(this[i])){
+                    count ++;
+                }
+            }
+            return count;
+        }
+    }
+})
